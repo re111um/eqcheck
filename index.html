@@ -37,18 +37,22 @@
                 height: 400px; 
             } 
         }
+        
+        /* [수정] 폼 라벨 스타일: 위쪽 배치, 하단 여백 */
         .form-label {
-            @apply block text-sm font-medium text-gray-700 w-24 text-right pr-4 pt-2;
+            @apply block text-sm font-medium text-gray-700 mb-1;
         }
+        /* [수정] 폼 입력창 스타일: 100% 너비 */
         .form-input {
-            @apply flex-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm;
+            @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm;
         }
-        .form-row {
-            @apply flex items-center space-x-4 mb-4;
-        }
+        /* [삭제] .form-row 클래스는 더 이상 사용하지 않습니다. */
+        
+        /* [수정] 폼 선택창 스타일: 100% 너비 */
         .form-select {
-            @apply flex-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm;
+            @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm;
         }
+
         /* [최종수정] 네비게이션 링크 항상 #FFFFFF (100% 하얀색) */
         .nav-link {
             @apply text-white hover:text-white; /* 기본 및 호버 상태: 하얀색 */
@@ -58,32 +62,15 @@
             @apply font-bold text-white underline underline-offset-4 decoration-white;
         }
         
-        /* Gemini 모달 스타일 */
-        .gemini-modal-overlay {
-            @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300;
-        }
-        .gemini-modal-content {
-            @apply bg-white rounded-lg shadow-xl p-6 w-11/12 max-w-lg transition-transform duration-300 scale-95;
-        }
-        .gemini-modal-loading .gemini-modal-spinner {
-            display: block;
-        }
-        .gemini-modal-spinner {
-            @apply w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto my-4;
-            display: none; /* 기본 숨김 */
-        }
-        .gemini-modal-body {
-            @apply text-sm text-gray-700 bg-gray-50 p-4 rounded-md border border-gray-200 max-h-60 overflow-y-auto;
-        }
+        /* Gemini 모달 스타일 (제거됨) */
     </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
 
-    <header class="bg-[#FFFFFF] shadow-sm sticky top-0 z-10">
+    <header class="bg-[#5E51FF] shadow-sm sticky top-0 z-10">
         <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row justify-between items-center">
             
-            <!-- [수정] 맨 앞의 / 를 제거했습니다 -->
             <img class="h-10" src="asset/logo.png" alt="Featuring Logo">
             
             <div class="flex flex-wrap justify-center sm:justify-end space-x-2 sm:space-x-3 mt-2 sm:mt-0">
@@ -100,9 +87,8 @@
         <section id="home" class="app-section space-y-6">
             
             <h2 class="text-3xl font-bold text-gray-900 border-b pb-2 flex items-center">
-                <!-- [수정] 맨 앞의 / 를 제거했습니다 -->
                 <img src="asset/speaker.png" alt="스피커" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
-                <span class="align-middle">IT 장비 정기 실사 안내</span>
+                <span class="align-middle">IT 자산 정기 실사 안내</span>
             </h2>
             
             <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 rounded-r-lg shadow">
@@ -132,7 +118,6 @@
         <section id="submission-form" class="app-section mt-12 pt-8 border-t border-gray-300">
             
             <h2 class="text-3xl font-bold text-gray-900 border-b pb-2 flex items-center">
-                <!-- [수정] 맨 앞의 / 를 제거했습니다 -->
                 <img src="asset/list.png" alt="list" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">정보 입력</span>
             </h2>
@@ -142,7 +127,8 @@
                 
                 <div class="space-y-4">
                     <h3 class="text-xl font-semibold text-gray-800">제출자 정보</h3>
-                    <div class="form-row">
+                    <!-- [수정] .form-row 대신 mb-4 사용, 라벨/입력창 수직 배치 -->
+                    <div class="mb-4">
                         <label for="submitter-dept" class="form-label">소속</label>
                         <select id="submitter-dept" name="submitter-dept" class="form-select" required>
                             <option value="" disabled selected>본부를 선택하세요</option>
@@ -152,29 +138,28 @@
                             <option value="세일즈&마케팅본부">세일즈&마케팅본부</option>
                         </select>
                     </div>
-                    <div class="form-row">
+                    <div class="mb-4">
                         <label for="submitter-name" class="form-label">영어 닉네임</label>
-                        <input type="text" id="submitter-name" name="submitter-name" class="form-input" placeholder="영어 닉네임 입력 (예: John)" required>
+                        <input type="text" id="submitter-name" name="submitter-name" class="form-input" placeholder="영어 닉네임 입력 (예: gildong)" required>
                     </div>
                 </div>
 
                 <div class="border-t pt-6 space-y-4">
                     <h3 class="text-xl font-semibold text-gray-800">노트북 정보</h3>
-                    <div class="form-row">
+                    <!-- [수정] .form-row 대신 mb-4 사용, 라벨/입력창 수직 배치 -->
+                    <div class="mb-4">
                         <label for="laptop-model" class="form-label">모델명</label>
                         <input type="text" id="laptop-model" name="laptop-model" class="form-input" placeholder="예: MacBook Pro 16" required>
                     </div>
-                    <div class="form-row">
+                    <div class="mb-4">
                         <label for="laptop-sn" class="form-label">S/N</label>
-                        <div class="flex-1 flex items-center space-x-2">
-                            <input type="text" id="laptop-sn" name="laptop-sn" class="form-input" placeholder="시리얼 넘버(S/N) 입력" required>
-                        </div>
+                        <input type="text" id="laptop-sn" name="laptop-sn" class="form-input" placeholder="시리얼 넘버(S/N) 입력" required>
                     </div>
-                    <div class="form-row">
+                    <div class="mb-4">
                         <label for="laptop-mfd" class="form-label">제조연월</label>
                         <input type="text" id="laptop-mfd" name="laptop-mfd" class="form-input" placeholder="예: 2023.05 또는 YYYYMM" required>
                     </div>
-                    <div class="form-row">
+                    <div class="mb-4">
                         <label for="laptop-notes" class="form-label">비고</label>
                         <input type="text" id="laptop-notes" name="laptop-notes" class="form-input" placeholder="S/N 훼손, 제조연월 확인 불가 등">
                     </div>
@@ -182,19 +167,20 @@
 
                 <div class="border-t pt-6 space-y-4">
                     <h3 class="text-xl font-semibold text-gray-800">모니터 정보</h3>
-                    <div class="form-row">
+                    <!-- [수정] .form-row 대신 mb-4 사용, 라벨/입력창 수직 배치 -->
+                    <div class="mb-4">
                         <label for="monitor-model" class="form-label">모델명</label>
                         <input type="text" id="monitor-model" name="monitor-model" class="form-input" placeholder="예: 32UN650" required>
                     </div>
-                    <div class="form-row">
+                    <div class="mb-4">
                         <label for="monitor-sn" class="form-label">S/N</label>
                         <input type="text" id="monitor-sn" name="monitor-sn" class="form-input" placeholder="시리얼 넘버(S/N) 입력" required>
                     </div>
-                    <div class="form-row">
+                    <div class="mb-4">
                         <label for="monitor-mfd" class="form-label">제조연월</label>
                         <input type="text" id="monitor-mfd" name="monitor-mfd" class="form-input" placeholder="예: 2023.05 또는 YYYYMM" required>
                     </div>
-                    <div class="form-row">
+                    <div class="mb-4">
                         <label for="monitor-notes" class="form-label">비고</label>
                         <input type="text" id="monitor-notes" name="monitor-notes" class="form-input" placeholder="스티커 훼손, 확인 불가 등">
                     </div>
@@ -212,7 +198,6 @@
         <section id="guide" class="app-section mt-12 pt-8 border-t border-gray-300">
             
             <h2 class="text-3xl font-bold text-gray-900 border-b pb-2 flex items-center">
-                <!-- [수정] 맨 앞의 / 를 제거했습니다 -->
                 <img src="asset/paperfl.png" alt="paperfl" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">정보 확인 가이드</span>
             </h2>
@@ -325,7 +310,6 @@
         <section id="help" class="app-section mt-12 pt-8 border-t border-gray-300">
             
             <h2 class="text-3xl font-bold text-gray-900 border-b pb-2 flex items-center">
-                <!-- [수정] 맨 앞의 / 를 제거했습니다 -->
                 <img src="asset/bell.png" alt="문의 아이콘" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">문의하기</span>
             </h2>
