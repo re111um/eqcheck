@@ -57,41 +57,17 @@
         .nav-link.active {
             @apply font-bold text-white underline underline-offset-4 decoration-white;
         }
-        
-        /* Gemini 모달 스타일 */
-        .gemini-modal-overlay {
-            @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300;
-        }
-        .gemini-modal-content {
-            @apply bg-white rounded-lg shadow-xl p-6 w-11/12 max-w-lg transition-transform duration-300 scale-95;
-        }
-        .gemini-modal-loading .gemini-modal-spinner {
-            display: block;
-        }
-        .gemini-modal-spinner {
-            @apply w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto my-4;
-            display: none; /* 기본 숨김 */
-        }
-        .gemini-modal-body {
-            @apply text-sm text-gray-700 bg-gray-50 p-4 rounded-md border border-gray-200 max-h-60 overflow-y-auto;
-        }
     </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
 
-    
-
-<header class="bg-[#5E51FF] shadow-sm sticky top-0 z-10">
+    <header class="bg-[#5E51FF] shadow-sm sticky top-0 z-10">
         <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row justify-between items-center">
             
+            <img class="h-10" src="/asset/logo.png" alt="Featuring Logo">
             
-
-<img class="h-10" src="/asset/logo.png" alt="Featuring Logo">
-            
-            
-
-<div class="flex flex-wrap justify-center sm:justify-end space-x-2 sm:space-x-3 mt-2 sm:mt-0">
+            <div class="flex flex-wrap justify-center sm:justify-end space-x-2 sm:space-x-3 mt-2 sm:mt-0">
                 <a href="#home" class="nav-link active" data-section="home">실사 개요</a>
                 <a href="#submission-form" class="nav-link" data-section="submission-form">정보 입력</a>
                 <a href="#guide" class="nav-link" data-section="guide">확인 가이드</a>
@@ -100,9 +76,7 @@
         </nav>
     </header>
 
-    
-
-<main class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+    <main class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
         
         <section id="home" class="app-section space-y-6">
             
@@ -143,9 +117,7 @@
             </h2>
             <p class="text-lg text-gray-700 mb-6">확인한 장비 정보를 아래 폼에 직접 입력 후 '제출하기' 버튼을 눌러주세요.</p>
             
-            
-
-<form id="asset-form" action="https://script.google.com/a/macros/featuring.in/s/AKfycbzseNw3Og1EHCIPPXvb1j-pdbH5eP97HVApyPZn190D1te2VITAeQd-7-42PiMpe6rTgA/exec" method="POST" class="bg-white p-6 sm:p-8 rounded-lg shadow-md space-y-6">
+            <form id="asset-form" action="https://script.google.com/a/macros/featuring.in/s/AKfycbzseNw3Og1EHCIPPXvb1j-pdbH5eP97HVApyPZn190D1te2VITAeQd-7-42PiMpe6rTgA/exec" method="POST" class="bg-white p-6 sm:p-8 rounded-lg shadow-md space-y-6">
                 
                 <div class="space-y-4">
                     <h3 class="text-xl font-semibold text-gray-800">제출자 정보</h3>
@@ -175,7 +147,7 @@
                         <label for="laptop-sn" class="form-label">S/N</label>
                         <div class="flex-1 flex items-center space-x-2">
                             <input type="text" id="laptop-sn" name="laptop-sn" class="form-input" placeholder="시리얼 넘버(S/N) 입력" required>
-                            <button type="button" id="gemini-sn-lookup" class="px-3 py-2 bg-blue-500 text-white text-sm font-semibold rounded-md shadow-sm hover:bg-blue-600 transition-colors">✨ 조회</button>
+                            <!-- [삭제] '✨ 조회' 버튼이 제거되었습니다. -->
                         </div>
                     </div>
                     <div class="form-row">
@@ -229,9 +201,7 @@
                 
                 <h3 class="text-2xl font-bold text-gray-800 mb-4">노트북 정보 확인 방법</h3>
                 
-                
-
-<nav class="flex space-x-2" aria-label="Tabs">
+                <nav class="flex space-x-2" aria-label="Tabs">
                     <button class="tab-link active" data-tab="laptop-sticker">방법 1: 스티커 확인</button>
                     <button class="tab-link" data-tab="laptop-windows">방법 2: Windows 확인</button>
                     <button class="tab-link" data-tab="laptop-mac">방법 3: macOS 확인</button>
@@ -274,7 +244,6 @@
                             <div class="bg-gray-900 text-white p-4 rounded-lg font-mono relative">
                                 <span id="cmd-text">wmic bios get serialnumber</span>
                                 <button id="copy-btn" class="absolute top-2 right-2 bg-gray-700 text-gray-200 px-3 py-1 rounded-md text-sm hover:bg-gray-600 transition-colors">복사</button>
-
                             </div>
                             <p id="copy-feedback" class="text-blue-600 h-5"></p>
                             <p>3. <code class="font-semibold">'SerialNumber'</code> 라는 텍스트 아래에 영문/숫자로 조합된 값이 나타납니다. 이 값이 노트북의 시리얼 넘버입니다.</p>
@@ -355,24 +324,7 @@
         <p class="text-sm text-gray-500">© 2025 Featuring. All rights reserved.</p>
     </footer>
 
-    
-    <div id="gemini-modal" class="gemini-modal-overlay hidden opacity-0" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="gemini-modal-content opacity-100 scale-100">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-semibold text-gray-900" id="modal-title">Gemini AI 도우미</h3>
-                <button id="modal-close-btn" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
-            </div>
-            <div class="gemini-modal-spinner"></div>
-            <div id="modal-body-content" class="gemini-modal-body">
-                
-            </div>
-            <div id="modal-error" class="text-red-500 text-sm mt-2 hidden"></div>
-            <div class="mt-4 flex justify-end space-x-2">
-                
-                <button id="modal-close-btn-bottom" class="px-4 py-2 bg-gray-200 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-300">닫기</button>
-            </div>
-        </div>
-    </div>
+    <!-- [삭제] Gemini AI 관련 모달 HTML이 제거되었습니다. -->
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -471,156 +423,10 @@
                 observer.observe(section);
             });
 
-            
-            
+            // [삭제] 폼 제출(submit) 이벤트 리스너가 제거되었습니다.
+            // (이제 폼은 'action' URL로 기본 HTML 동작에 따라 제출됩니다.)
 
-            
-            const modal = document.getElementById('gemini-modal');
-            const modalContent = modal.querySelector('.gemini-modal-content');
-            const modalTitle = document.getElementById('modal-title');
-            const modalBody = document.getElementById('modal-body-content');
-            const modalSpinner = modal.querySelector('.gemini-modal-spinner');
-            const modalError = document.getElementById('modal-error');
-            
-            const modalCloseBtns = [document.getElementById('modal-close-btn'), document.getElementById('modal-close-btn-bottom')];
-            const snLookupBtn = document.getElementById('gemini-sn-lookup');
-            
-
-            const apiKey = ""; 
-            const genAIApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-
-            
-            async function callGeminiAPI(payload) {
-                let retries = 3;
-                let delay = 1000;
-                while (retries > 0) {
-                    try {
-                        const response = await fetch(genAIApiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        
-                        const result = await response.json();
-                        const candidate = result.candidates?.[0];
-
-                        if (candidate && candidate.content?.parts?.[0]?.text) {
-                            return { text: candidate.content.parts[0].text, sources: null }; 
-                        } else {
-                            throw new Error("API 응답에서 유효한 텍스트를 찾을 수 없습니다.");
-                        }
-                    } catch (error) {
-                        console.error("Gemini API Error:", error);
-                        retries--;
-                        if (retries === 0) {
-                            return { error: `API 호출에 실패했습니다: ${error.message}` };
-                        }
-                        await new Promise(res => setTimeout(res, delay));
-                        delay *= 2; 
-                    }
-                }
-            }
-
-            
-            function showModal(isLoading = true, title = "Gemini AI 도우미", content = "") {
-                modalTitle.textContent = title;
-                modalBody.innerHTML = content.replace(/\n/g, '<br>'); 
-                modalError.classList.add('hidden');
-                
-                
-                if (isLoading) {
-                    modal.classList.remove('gemini-modal-loading'); 
-                    void modal.offsetWidth; 
-                    modal.classList.add('gemini-modal-loading');
-                    modalBody.classList.add('hidden');
-                } else {
-                    modal.classList.remove('gemini-modal-loading');
-                    modalBody.classList.remove('hidden');
-                }
-                
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    modal.classList.remove('opacity-0');
-                    modalContent.classList.remove('scale-95');
-                    modal.classList.add('opacity-100');
-                    modalContent.classList.add('scale-100');
-                }, 10);
-            }
-
-            
-            function hideModal() {
-                modal.classList.remove('opacity-100');
-                modalContent.classList.remove('scale-100');
-                modal.classList.add('opacity-0');
-                modalContent.classList.add('scale-95');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                }, 300);
-            }
-
-            
-            function showModalError(message) {
-                modal.classList.remove('gemini-modal-loading');
-                modalBody.classList.add('hidden');
-                modalError.textContent = message;
-                modalError.classList.remove('hidden');
-            }
-
-            
-            modalCloseBtns.forEach(btn => btn.addEventListener('click', hideModal));
-            if(modal) {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        hideModal();
-                    }
-                });
-            }
-
-            
-            if(snLookupBtn) {
-                snLookupBtn.addEventListener('click', async () => {
-                    const snInput = document.getElementById('laptop-sn');
-                    const modelInput = document.getElementById('laptop-model');
-                    const serialNumber = snInput.value.trim();
-
-                    if (!serialNumber) {
-                        showModal(false, "S/N 조회 오류", "노트북 S/N을 먼저 입력해주세요.");
-                        return;
-                    }
-
-                    showModal(true, "모델명 조회 중...");
-                    snLookupBtn.disabled = true;
-                    snLookupBtn.textContent = "조회중...";
-
-                    const userQuery = `노트북 시리얼 넘버(S/N)가 '${serialNumber}'입니다. 이 S/N의 정확한 노트북 '모델명'만 알려주세요. (예: MacBook Pro 16-inch M2, Galaxy Book 3 Ultra). 모델명만 간결하게 응답해주세요.`;
-                    
-                    const payload = {
-                        contents: [{ parts: [{ text: userQuery }] }],
-                        tools: [{ "google_search": {} }],
-                        systemInstruction: {
-                            parts: [{ text: "당신은 노트북 S/N으로 모델명을 찾아주는 IT 전문가입니다. 오직 '모델명'만 간결하게 응답합니다. " }]
-                        },
-                    };
-
-                    const result = await callGeminiAPI(payload);
-
-                    if (result.error) {
-                        showModalError(result.error);
-                    } else {
-                        const modelName = result.text.replace(/모델명은|입니다|"|'/g, '').trim(); 
-                        showModal(false, "모델명 조회 완료", `조회된 모델명: <strong>${modelName}</strong><br><br>이 모델명을 입력란에 자동 적용합니다.`);
-                        modelInput.value = modelName;
-                        modelInput.focus();
-                    }
-
-                    snLookupBtn.disabled = false;
-                    snLookupBtn.innerHTML = "✨ 조회";
-                });
-            }
+            // [삭제] Gemini AI 관련 모든 JavaScript(API 호출, 모달)가 제거되었습니다.
 
         });
     </script>
