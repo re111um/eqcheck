@@ -143,7 +143,9 @@
             </h2>
             <p class="text-lg text-gray-700 mb-6">확인한 장비 정보를 아래 폼에 직접 입력 후 '제출하기' 버튼을 눌러주세요.</p>
             
-            <form id="asset-form" action="[여기에 Google Form 또는 다른 제출 처리 URL 삽입]" method="POST" class="bg-white p-6 sm:p-8 rounded-lg shadow-md space-y-6">
+            
+
+<form id="asset-form" action="[여기에 Google Form 또는 다른 제출 처리 URL 삽입]" method="POST" class="bg-white p-6 sm:p-8 rounded-lg shadow-md space-y-6">
                 
                 <div class="space-y-4">
                     <h3 class="text-xl font-semibold text-gray-800">제출자 정보</h3>
@@ -470,55 +472,7 @@
             });
 
             
-            const form = document.getElementById('asset-form');
-            if(form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault(); 
-                    
-                    const submitButton = document.getElementById('submit-button');
-                    const submitMessage = document.getElementById('submit-message');
-                    submitButton.disabled = true;
-                    submitButton.textContent = '제출 중...';
-                    submitMessage.textContent = '데이터를 Google 시트로 전송하는 중입니다...';
-
-                    const actionUrl = form.action;
-                    const formData = new FormData(form);
-
-                    fetch(actionUrl, {
-                        method: 'POST',
-                        body: formData,
-                        mode: 'no-cors' 
-                    }).then(response => {
-                        
-                        
-                        form.reset(); 
-                        submitButton.style.backgroundColor = '#28a745'; 
-                        submitButton.textContent = '✅ 제출 완료!';
-                        submitMessage.textContent = '새로운 정보를 입력할 수 있습니다.';
-                        
-                        setTimeout(() => {
-                           submitButton.disabled = false;
-                           submitButton.style.backgroundColor = ''; 
-                           submitButton.textContent = '▶ 자산 실사 정보 제출하기';
-                           submitMessage.textContent = '(제출 버튼 클릭 시, 수집된 정보가 엑셀 시트로 전송됩니다.)';
-                        }, 4000);
-
-                    }).catch(error => {
-                        
-                        console.error('Submit Error:', error);
-                        submitButton.disabled = false;
-                        submitButton.style.backgroundColor = '#dc3545'; 
-                        submitButton.textContent = '❌ 제출 실패';
-                        submitMessage.textContent = '오류가 발생했습니다. 잠시 후 다시 시도해주세요.';
-                        
-                         setTimeout(() => {
-                           submitButton.style.backgroundColor = ''; 
-                           submitButton.textContent = '▶ 자산 실사 정보 제출하기';
-                           submitMessage.textContent = '(제출 버튼 클릭 시, 수집된 정보가 엑셀 시트로 전송됩니다.)';
-                        }, 4000);
-                    });
-                });
-            }
+            
 
             
             const modal = document.getElementById('gemini-modal');
