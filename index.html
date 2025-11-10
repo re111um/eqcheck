@@ -57,6 +57,24 @@
         .nav-link.active {
             @apply font-bold text-white underline underline-offset-4 decoration-white;
         }
+        
+        /* Gemini 모달 스타일 */
+        .gemini-modal-overlay {
+            @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300;
+        }
+        .gemini-modal-content {
+            @apply bg-white rounded-lg shadow-xl p-6 w-11/12 max-w-lg transition-transform duration-300 scale-95;
+        }
+        .gemini-modal-loading .gemini-modal-spinner {
+            display: block;
+        }
+        .gemini-modal-spinner {
+            @apply w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto my-4;
+            display: none; /* 기본 숨김 */
+        }
+        .gemini-modal-body {
+            @apply text-sm text-gray-700 bg-gray-50 p-4 rounded-md border border-gray-200 max-h-60 overflow-y-auto;
+        }
     </style>
 </head>
 
@@ -65,7 +83,8 @@
     <header class="bg-[#5E51FF] shadow-sm sticky top-0 z-10">
         <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row justify-between items-center">
             
-            <img class="h-10" src="/asset/logo.png" alt="Featuring Logo">
+            <!-- [수정] 맨 앞의 / 를 제거했습니다 -->
+            <img class="h-10" src="asset/logo.png" alt="Featuring Logo">
             
             <div class="flex flex-wrap justify-center sm:justify-end space-x-2 sm:space-x-3 mt-2 sm:mt-0">
                 <a href="#home" class="nav-link active" data-section="home">실사 개요</a>
@@ -81,7 +100,8 @@
         <section id="home" class="app-section space-y-6">
             
             <h2 class="text-3xl font-bold text-gray-900 border-b pb-2 flex items-center">
-                <img src="/asset/speaker.png" alt="스피커" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
+                <!-- [수정] 맨 앞의 / 를 제거했습니다 -->
+                <img src="asset/speaker.png" alt="스피커" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">IT 자산 정기 실사 안내</span>
             </h2>
             
@@ -112,7 +132,8 @@
         <section id="submission-form" class="app-section mt-12 pt-8 border-t border-gray-300">
             
             <h2 class="text-3xl font-bold text-gray-900 border-b pb-2 flex items-center">
-                <img src="/asset/list.png" alt="list" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
+                <!-- [수정] 맨 앞의 / 를 제거했습니다 -->
+                <img src="asset/list.png" alt="list" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">정보 입력</span>
             </h2>
             <p class="text-lg text-gray-700 mb-6">확인한 장비 정보를 아래 폼에 직접 입력 후 '제출하기' 버튼을 눌러주세요.</p>
@@ -147,7 +168,6 @@
                         <label for="laptop-sn" class="form-label">S/N</label>
                         <div class="flex-1 flex items-center space-x-2">
                             <input type="text" id="laptop-sn" name="laptop-sn" class="form-input" placeholder="시리얼 넘버(S/N) 입력" required>
-                            <!-- [삭제] '✨ 조회' 버튼이 제거되었습니다. -->
                         </div>
                     </div>
                     <div class="form-row">
@@ -192,7 +212,8 @@
         <section id="guide" class="app-section mt-12 pt-8 border-t border-gray-300">
             
             <h2 class="text-3xl font-bold text-gray-900 border-b pb-2 flex items-center">
-                <img src="/asset/paperfl.png" alt="paperfl" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
+                <!-- [수정] 맨 앞의 / 를 제거했습니다 -->
+                <img src="asset/paperfl.png" alt="paperfl" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">정보 확인 가이드</span>
             </h2>
             <p class="text-lg text-gray-700 mb-6">입력할 정보를 찾는 데 어려움이 있다면 아래 가이드를 확인하세요.</p>
@@ -304,7 +325,8 @@
         <section id="help" class="app-section mt-12 pt-8 border-t border-gray-300">
             
             <h2 class="text-3xl font-bold text-gray-900 border-b pb-2 flex items-center">
-                <img src="/asset/bell.png" alt="문의 아이콘" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
+                <!-- [수정] 맨 앞의 / 를 제거했습니다 -->
+                <img src="asset/bell.png" alt="문의 아이콘" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">문의하기</span>
             </h2>
             <p class="text-lg text-gray-700">정보 확인에 어려움이 있거나 스티커가 훼손되어 식별이 불가능한 경우, 언제든지 아래 담당자에게 문의해 주세요.</p>
@@ -324,7 +346,7 @@
         <p class="text-sm text-gray-500">© 2025 Featuring. All rights reserved.</p>
     </footer>
 
-    <!-- [삭제] Gemini AI 관련 모달 HTML이 제거되었습니다. -->
+    <!-- Gemini AI 관련 모달 HTML이 제거되었습니다. -->
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -423,10 +445,10 @@
                 observer.observe(section);
             });
 
-            // [삭제] 폼 제출(submit) 이벤트 리스너가 제거되었습니다.
+            // 폼 제출(submit) 이벤트 리스너가 제거되었습니다.
             // (이제 폼은 'action' URL로 기본 HTML 동작에 따라 제출됩니다.)
 
-            // [삭제] Gemini AI 관련 모든 JavaScript(API 호출, 모달)가 제거되었습니다.
+            // Gemini AI 관련 모든 JavaScript가 제거되었습니다.
 
         });
     </script>
