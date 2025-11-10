@@ -12,10 +12,10 @@
         }
         /* 탭 링크를 개별 버튼 스타일로 변경 */
         .tab-link {
-            @apply px-5 py-2 text-base font-medium text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors duration-200 shadow-sm;
+            @apply px-5 py-2 text-base font-medium text-white bg-[#5E51FF] border border-[#5E51FF] rounded-md hover:bg-[#5045e0] transition-colors duration-200 shadow-sm;
         }
         .tab-link.active {
-            @apply bg-blue-600 text-white font-semibold shadow-md; 
+            @apply bg-[#5E51FF] text-white font-semibold shadow-md border-[#5E51FF]; 
         }
         .tab-content {
             display: none;
@@ -68,7 +68,7 @@
 
 <body class="bg-gray-50 text-gray-800">
 
-    <header class="bg-[#5E51FF] shadow-sm sticky top-0 z-10">
+    <header class="bg-[#FFFFFF] shadow-sm sticky top-0 z-10">
         <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row justify-between items-center">
             
             <img class="h-10" src="asset/logo.png" alt="Featuring Logo">
