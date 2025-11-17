@@ -57,8 +57,8 @@
             @apply block font-medium text-gray-700 mb-1;
             font-size: 10pt;
         }
-        /* [수정] 폼 입력창 스타일: 100% 너비, 폰트 적용 */
-        .form-input {
+        /* [수정] 폼 입력창/텍스트영역 스타일: 100% 너비, 폰트 적용 */
+        .form-input, .form-textarea {
             @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500;
             font-size: 10pt;
         }
@@ -226,9 +226,10 @@
                         <!-- === 비개발자 수정 영역 끝 === -->
                     </div>
                     
+                    <!-- [수정] <input>을 <textarea>로 변경 -->
                     <div class="mb-4">
                         <label for="software-other" class="form-label font-body-main">기타 소프트웨어</label>
-                        <input type="text" id="software-other" name="software-other" class="form-input font-body-main" placeholder="목록에 없는 경우, 쉼표(,)로 구분하여 입력 (예: Adobe, Figma)">
+                        <textarea id="software-other" name="software-other" rows="2" class="form-textarea font-body-main" placeholder="목록에 없는 경우, 쉼표(,)로 구분하여 입력 (예: Adobe, Figma)"></textarea>
                     </div>
                 </div>
 
@@ -558,7 +559,7 @@
 
                 if (adminCheck) {
                     // Admin을 체크하면 -> 메인도 자동 체크
-                    adminCheck.addEventListener('change', ().T. {
+                    adminCheck.addEventListener('change', () => {
                         if (adminCheck.checked) {
                             mainCheck.checked = true;
                         }
