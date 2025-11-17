@@ -83,6 +83,7 @@
 <body class="bg-gray-50 text-gray-800">
 
     <header class="bg-[#FFFFFF] shadow-sm sticky top-0 z-10">
+        <!-- ... existing header code ... -->
         <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row justify-between items-center">
             
             <img class="h-10" src="asset/logo.png" alt="Featuring Logo">
@@ -149,7 +150,7 @@
             <form id="asset-form" action="https://script.google.com/a/macros/featuring.in/s/AKfycbzseNw3Og1EHCIPPXvb1j-pdbH5eP97HVApyPZn190D1te2VITAeQd-7-42PiMpe6rTgA/exec" method="POST" class="bg-white p-6 sm:p-8 rounded-lg shadow-md space-y-6">
                 
                 <div class="space-y-4">
-                    <!-- [수정] font-title-sub 적용 -->
+                    <!-- ... existing submitter info ... -->
                     <h3 class="font-title-sub font-semibold text-gray-800">제출자 정보</h3>
                     <div class="mb-4">
                         <label for="submitter-dept" class="form-label font-body-main">소속</label>
@@ -167,34 +168,62 @@
                     </div>
                 </div>
 
-                <!-- [추가] 사용 소프트웨어 정보 -->
-                <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
+                <!-- [수정] 사용 소프트웨어 정보 (Admin 체크박스 추가) -->
                 <div class="pt-6 space-y-4">
-                    <h3 class="font-title-sub font-semibold text-gray-800">사용 소프트웨어 (중복 체크 가능)</h3>
-                    <p class="font-body-main text-gray-600">현재 업무에 사용 중인 소프트웨어를 모두 선택해 주세요.</p>
+                    <h3 class="font-title-sub font-semibold text-gray-800">사용 소프트웨어</h3>
+                    <p class="font-body-main text-gray-600">현재 사용 중인 소프트웨어와 Admin 계정 보유 시 함께 체크해 주세요.</p>
                     
-                    <div id="software-checklist" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- [수정] grid-cols-1 md:grid-cols-2 로 변경하여 가로 공간 확보 -->
+                    <div id="software-checklist" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         
                         <!-- === 비개발자 수정 영역 시작 === -->
-                        <!-- 항목을 추가/수정하려면 이 <label>~</label> 블록을 복사/붙여넣기 하세요 -->
-                        <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" name="software" value="Google" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
-                            <span class="font-body-main text-gray-700">Google</span>
+                        <!-- [수정] Admin 체크박스를 포함한 <label> 구조로 변경 -->
+                        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+                            <!-- Main Software Check -->
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" name="software" value="Google" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                                <span class="font-body-main text-gray-700">Google</span>
+                            </div>
+                            <!-- Admin Check -->
+                            <div class="flex items-center space-x-1">
+                                <input type="checkbox" name="software_admin" value="Google_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
+                                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
+                            </div>
                         </label>
-                        <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" name="software" value="SLACK" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
-                            <span class="font-body-main text-gray-700">SLACK</span>
+
+                        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" name="software" value="SLACK" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                                <span class="font-body-main text-gray-700">SLACK</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <input type="checkbox" name="software_admin" value="SLACK_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
+                                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
+                            </div>
                         </label>
-                        <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" name="software" value="Atlassian" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
-                            <span class="font-body-main text-gray-700">Atlassian (Jira, Confluence)</span>
+
+                        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" name="software" value="Atlassian" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                                <span class="font-body-main text-gray-700">Atlassian (Jira, Confluence)</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <input type="checkbox" name="software_admin" value="Atlassian_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
+                                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
+                            </div>
                         </label>
-                        <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" name="software" value="FLEX" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
-                            <span class="font-body-main text-gray-700">FLEX</span>
+
+                        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" name="software" value="FLEX" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                                <span class="font-body-main text-gray-700">FLEX</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <input type="checkbox" name="software_admin" value="FLEX_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
+                                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
+                            </div>
                         </label>
                         <!-- === 비개발자 수정 영역 끝 === -->
-
                     </div>
                     
                     <div class="mb-4">
@@ -205,6 +234,7 @@
 
                 <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
                 <div class="pt-6 space-y-4">
+                    <!-- ... existing laptop info ... -->
                     <h3 class="font-title-sub font-semibold text-gray-800">노트북 정보</h3>
                     <div class="mb-4">
                         <label for="laptop-model" class="form-label font-body-main">모델명</label>
@@ -226,6 +256,7 @@
 
                 <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
                 <div class="pt-6 space-y-4">
+                    <!-- ... existing monitor info ... -->
                     <h3 class="font-title-sub font-semibold text-gray-800">모니터 정보</h3>
                     <div class="mb-4">
                         <label for="monitor-model" class="form-label font-body-main">모델명</label>
@@ -257,7 +288,7 @@
 
         <!-- [수정] 상단 구분선은 유지 -->
         <section id="guide" class="app-section mt-12 pt-8 border-t border-gray-300">
-            
+            <!-- ... existing guide section ... -->
             <!-- [수정] font-title-large 적용, border-b 제거 -->
             <h2 class="font-title-large font-bold text-gray-900 pb-2 flex items-center">
                 <img src="asset/paperfl.png" alt="paperfl" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
@@ -279,9 +310,8 @@
 
                 <div class="mt-4">
                     <div id="laptop-sticker" class="tab-content active p-6 bg-white rounded-lg shadow-md">
-                        <!-- [수정] font-title-sub 적용 -->
+                        <!-- ... existing tab content ... -->
                         <h4 class="font-title-sub font-semibold mb-4 text-gray-800">노트북 바닥 면 스티커 확인 (4단계)</h4>
-                        <!-- [수정] font-body-main 적용 -->
                         <p class="font-body-main text-gray-600 mb-6">대부분의 정보는 노트북 바닥 면의 스티커에 모두 표기되어 있습니다.</p>
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
                             <div class="bg-white p-5 rounded-lg shadow-inner border border-gray-200">
@@ -308,9 +338,8 @@
                     </div>
 
                     <div id="laptop-windows" class="tab-content p-6 bg-white rounded-lg shadow-md">
-                        <!-- [수정] font-title-sub 적용 -->
+                        <!-- ... existing tab content ... -->
                         <h4 class="font-title-sub font-semibold mb-4 text-gray-800">명령 프롬프트(cmd)로 시리얼 넘버 확인</h4>
-                        <!-- [수정] font-body-main 적용 -->
                         <p class="font-body-main text-gray-600 mb-6">스티커가 훼손되었거나 글씨를 읽기 어려운 경우, 아래 방법으로 시리얼 넘버(S/N)를 확인할 수 있습니다. (제조연월은 확인되지 않을 수 있습니다.)</p>
                         <div class="font-body-main space-y-4 text-gray-700">
                             <p>1. 키보드의 <code class="bg-gray-200 px-2 py-1 rounded">Windows 키 + R</code> 키를 눌러 '실행' 창을 열거나, 시작 메뉴 검색창에서 <code class="bg-gray-200 px-2 py-1 rounded">cmd</code>를 검색하여 '명령 프롬프트'를 실행합니다.</p>
@@ -325,9 +354,8 @@
                     </div>
 
                     <div id="laptop-mac" class="tab-content p-6 bg-white rounded-lg shadow-md">
-                        <!-- [수정] font-title-sub 적용 -->
+                        <!-- ... existing tab content ... -->
                         <h4 class="font-title-sub font-semibold mb-4 text-gray-800">Apple 메뉴()로 시리얼 넘버 확인</h4>
-                        <!-- [수정] font-body-main 적용 -->
                         <p class="font-body-main text-gray-600 mb-6">macOS 사용자는 이 방법이 가장 간단합니다. (바닥 면 각인으로도 확인 가능)</p>
                         <ol class="font-body-main list-decimal list-inside space-y-3 text-gray-700">
                             <li>화면 좌측 상단의 Apple 로고()를 클릭합니다.</li>
@@ -347,13 +375,10 @@
 
             <!-- [수정] border-t (구분선) 제거 -->
             <div id="monitor-guide" class="mt-10 pt-8">
-                
-                <!-- [수정] font-title-sub 적용 -->
+                <!-- ... existing monitor guide ... -->
                 <h3 class="font-title-sub font-bold text-gray-800 mb-4">모니터 정보 확인 방법</h3>
                 <div class="p-6 bg-white rounded-lg shadow-md">
-                    <!-- [수정] font-title-sub 적용 -->
                     <h4 class="font-title-sub font-semibold mb-4 text-gray-800">모니터 뒷면 스티커 확인 (4단계)</h4>
-                    <!-- [수정] font-body-main 적용 -->
                     <p class="font-body-main text-gray-600 mb-6">모니터의 정보는 대부분 제품 뒷면의 스티커에 표기되어 있습니다. (전원 케이블 연결부 근처)</p>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
                         <div class="bg-white p-5 rounded-lg shadow-inner border border-gray-200">
@@ -383,17 +408,14 @@
 
         <!-- [수정] 상단 구분선은 유지 -->
         <section id="help" class="app-section mt-12 pt-8 border-t border-gray-300">
-            
-            <!-- [수정] font-title-large 적용, border-b 제거 -->
+            <!-- ... existing help section ... -->
             <h2 class="font-title-large font-bold text-gray-900 pb-2 flex items-center">
                 <img src="asset/bell.png" alt="문의 아이콘" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">문의하기</span>
             </h2>
-            <!-- [수정] font-body-main 적용 -->
             <p class="font-body-main text-gray-700">정보 확인에 어려움이 있거나 스티커가 훼손되어 식별이 불가능한 경우, 언제든지 아래 담당자에게 문의해 주세요.</p>
             
             <div class="bg-white p-6 rounded-lg shadow-md mt-6">
-                <!-- [수정] font-body-main 적용 -->
                 <ul class="font-body-main list-disc list-inside space-y-2 text-gray-700">
                     <li><strong class="font-medium">담당 부서:</strong> 경영관리본부 경영인프라팀</li>
                     <li><strong class="font-medium">담당자:</strong> Thomas</li>
@@ -456,6 +478,7 @@
             const copyBtn = document.getElementById('copy-btn');
             
             if (copyBtn) {
+                // ... existing copy button logic ...
                 const cmdText = document.getElementById('cmd-text').innerText;
                 const copyFeedback = document.getElementById('copy-feedback');
                 
@@ -484,6 +507,7 @@
             const sections = document.querySelectorAll('.app-section');
 
             navLinks.forEach(link => {
+                // ... existing nav link logic ...
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetId = link.getAttribute('href');
@@ -507,6 +531,7 @@
 
             
             const observer = new IntersectionObserver((entries) => {
+                // ... existing intersection observer logic ...
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const id = entry.target.id;
@@ -522,6 +547,30 @@
 
             sections.forEach(section => {
                 observer.observe(section);
+            });
+
+            // [추가] Admin 체크박스 자동 선택 로직
+            // 부모 체크박스(software)를 클릭하면, 자식(software_admin)이 체크 해제될 때 부모도 해제되도록
+            const softwareCheckboxes = document.querySelectorAll('input[name="software"]');
+            softwareCheckboxes.forEach(mainCheck => {
+                const mainLabel = mainCheck.closest('label');
+                const adminCheck = mainLabel.querySelector('input[name="software_admin"]');
+
+                if (adminCheck) {
+                    // Admin을 체크하면 -> 메인도 자동 체크
+                    adminCheck.addEventListener('change', ().T. {
+                        if (adminCheck.checked) {
+                            mainCheck.checked = true;
+                        }
+                    });
+
+                    // 메인을 체크 해제하면 -> Admin도 자동 체크 해제
+                    mainCheck.addEventListener('change', () => {
+                        if (!mainCheck.checked) {
+                            adminCheck.checked = false;
+                        }
+                    });
+                }
             });
 
         });
