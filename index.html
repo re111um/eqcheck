@@ -7,13 +7,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        /* [추가] Noto Sans KR 폰트 임포트 */
+        @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+
         html {
             scroll-behavior: smooth;
         }
+        
+        /* [추가] Noto Sans 폰트 및 기본 크기 적용 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 10pt; /* 본문 기본 크기 */
+            @apply bg-gray-50 text-gray-800;
+        }
+
+        /* [추가] 폰트 크기 클래스 */
+        .font-title-large { font-size: 20pt; }
+        .font-title-sub { font-size: 15pt; }
+        .font-body-main { font-size: 10pt; }
+
         /* 탭 링크를 개별 버튼 스타일로 변경 */
-.tab-link {
-    @apply px-5 py-2 text-base font-medium text-white bg-[#5E51FF] border border-[#5E51FF] rounded-md hover:bg-[#5045e0] transition-colors duration-200 shadow-sm;
-}
+        .tab-link {
+            @apply px-5 py-2 text-base font-medium text-white bg-[#5E51FF] border border-[#5E51FF] rounded-md hover:bg-[#5045e0] transition-colors duration-200 shadow-sm;
+            font-size: 10pt; /* [수정] 폰트 크기 적용 */
+        }
         .tab-content {
             display: none;
         }
@@ -35,31 +52,31 @@
             } 
         }
         
-        /* [수정] 폼 라벨 스타일: 위쪽 배치, 하단 여백 */
+        /* [수정] 폼 라벨 스타일: 위쪽 배치, 하단 여백, 폰트 적용 */
         .form-label {
-            @apply block text-sm font-medium text-gray-700 mb-1;
+            @apply block font-medium text-gray-700 mb-1;
+            font-size: 10pt;
         }
-        /* [수정] 폼 입력창 스타일: 100% 너비 */
+        /* [수정] 폼 입력창 스타일: 100% 너비, 폰트 적용 */
         .form-input {
-            @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm;
+            @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500;
+            font-size: 10pt;
         }
-        /* [삭제] .form-row 클래스는 더 이상 사용하지 않습니다. */
         
-        /* [수정] 폼 선택창 스타일: 100% 너비 */
+        /* [수정] 폼 선택창 스타일: 100% 너비, 폰트 적용 */
         .form-select {
-            @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm;
+            @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500;
+            font-size: 10pt;
         }
 
-        /* [최종수정] 네비게이션 링크 항상 #FFFFFF (100% 하얀색) */
-    .nav-link {
-        @apply text-gray-700 hover:text-[#5E51FF]; /* 기본: 회색, 호버: 보라색 */
-    }
-        /* [최종수정] 활성 링크 스타일 (굵게, 밑줄) */
-    .nav-link.active {
-        @apply font-bold text-[#5E51FF] underline underline-offset-4 decoration-[#5E51FF];
-    }
-        
-        /* Gemini 모달 스타일 (제거됨) */
+        /* 네비게이션 링크 폰트 적용 */
+        .nav-link {
+            @apply text-gray-700 hover:text-[#5E51FF]; 
+            font-size: 10pt;
+        }
+        .nav-link.active {
+            @apply font-bold text-[#5E51FF] underline underline-offset-4 decoration-[#5E51FF];
+        }
     </style>
 </head>
 
@@ -83,28 +100,34 @@
         
         <section id="home" class="app-section space-y-6">
             
-            <h2 class="text-3xl font-bold text-gray-900 border-b pb-2 flex items-center">
+            <!-- [수정] font-title-large 적용 -->
+            <h2 class="font-title-large font-bold text-gray-900 border-b pb-2 flex items-center">
                 <img src="asset/speaker.png" alt="스피커" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">IT 자산 정기 실사 안내</span>
             </h2>
             
+            <!-- [수정] font-body-main 적용 -->
             <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 rounded-r-lg shadow">
-                <p class="font-semibold">회사의 중요 자산인 IT 장비의 효율적인 관리와 현황 파악을 위해 반기별 정기 실사를 실시합니다. 임직원 여러분의 정확한 정보 제출이 필요합니다.</p>
+                <p class="font-body-main font-semibold">회사의 중요 자산인 IT 장비의 효율적인 관리와 현황 파악을 위해 반기별 정기 실사를 실시합니다. 임직원 여러분의 정확한 정보 제출이 필요합니다.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-3 text-gray-800">실사 개요</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <!-- [수정] font-title-sub 적용 -->
+                    <h3 class="font-title-sub font-semibold mb-3 text-gray-800">실사 개요</h3>
+                    <!-- [수정] font-body-main 적용 -->
+                    <ul class="font-body-main list-disc list-inside space-y-2 text-gray-700">
                         <li><strong class="font-medium">실사 주기:</strong> 연 2회 (반기별)</li>
                         <li><strong class="font-medium">실사 기간:</strong> 2025년 11월 10일 ~ 11월 14일</li>
                         <li><strong class="font-semibold text-red-600">제출 마감: 2025년 11월 14일(금) 23:59</strong></li>
                     </ul>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-3 text-gray-800">제출 정보</h3>
-                    <p class="mb-2 text-gray-700">현재 사용 중인 아래 장비의 정보를 제출해 주세요.</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <!-- [수정] font-title-sub 적용 -->
+                    <h3 class="font-title-sub font-semibold mb-3 text-gray-800">제출 정보</h3>
+                    <!-- [수정] font-body-main 적용 -->
+                    <p class="font-body-main mb-2 text-gray-700">현재 사용 중인 아래 장비의 정보를 제출해 주세요.</p>
+                    <ul class="font-body-main list-disc list-inside space-y-2 text-gray-700">
                         <li><strong class="font-medium">노트북 1대:</strong> 모델명, 시리얼 넘버(S/N), 제조연월</li>
                         <li><strong class="font-medium">모니터 1대:</strong> 모델명, 시리얼 넘버(S/N), 제조연월</li>
                     </ul>
@@ -112,22 +135,25 @@
             </div>
         </section>
 
-<section id="submission-form" class="app-section mt-12 pt-8">
+        <!-- [수정] 상단 구분선은 유지 -->
+        <section id="submission-form" class="app-section mt-12 pt-8">
 
-    <h2 class="text-3xl font-bold text-gray-900 pb-2 flex items-center">
+            <!-- [수정] font-title-large 적용 -->
+            <h2 class="font-title-large font-bold text-gray-900 pb-2 flex items-center">
                 <img src="asset/list.png" alt="list" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">정보 입력</span>
             </h2>
-            <p class="text-lg text-gray-700 mb-6">확인한 장비 정보를 아래 폼에 직접 입력 후 '제출하기' 버튼을 눌러주세요.</p>
+            <!-- [수정] font-body-main 적용 -->
+            <p class="font-body-main text-gray-700 mb-6">확인한 장비 정보를 아래 폼에 직접 입력 후 '제출하기' 버튼을 눌러주세요.</p>
             
             <form id="asset-form" action="https://script.google.com/a/macros/featuring.in/s/AKfycbzseNw3Og1EHCIPPXvb1j-pdbH5eP97HVApyPZn190D1te2VITAeQd-7-42PiMpe6rTgA/exec" method="POST" class="bg-white p-6 sm:p-8 rounded-lg shadow-md space-y-6">
                 
                 <div class="space-y-4">
-                    <h3 class="text-xl font-semibold text-gray-800">제출자 정보</h3>
-                    <!-- [수정] .form-row 대신 mb-4 사용, 라벨/입력창 수직 배치 -->
+                    <!-- [수정] font-title-sub 적용 -->
+                    <h3 class="font-title-sub font-semibold text-gray-800">제출자 정보</h3>
                     <div class="mb-4">
-                        <label for="submitter-dept" class="form-label">소속</label>
-                        <select id="submitter-dept" name="submitter-dept" class="form-select" required>
+                        <label for="submitter-dept" class="form-label font-body-main">소속</label>
+                        <select id="submitter-dept" name="submitter-dept" class="form-select font-body-main" required>
                             <option value="" disabled selected>본부를 선택하세요</option>
                             <option value="경영관리본부">경영관리본부</option>
                             <option value="프로덕트본부">프로덕트본부</option>
@@ -136,73 +162,114 @@
                         </select>
                     </div>
                     <div class="mb-4">
-                        <label for="submitter-name" class="form-label">영어 닉네임</label>
-                        <input type="text" id="submitter-name" name="submitter-name" class="form-input" placeholder="영어 닉네임 입력 (예: John)" required>
+                        <label for="submitter-name" class="form-label font-body-main">영어 닉네임</label>
+                        <input type="text" id="submitter-name" name="submitter-name" class="form-input font-body-main" placeholder="영어 닉네임 입력 (예: John)" required>
                     </div>
                 </div>
 
-                <div class="border-t pt-6 space-y-4">
-                    <h3 class="text-xl font-semibold text-gray-800">노트북 정보</h3>
-                    <!-- [수정] .form-row 대신 mb-4 사용, 라벨/입력창 수직 배치 -->
-                    <div class="mb-4">
-                        <label for="laptop-model" class="form-label">모델명</label>
-                        <input type="text" id="laptop-model" name="laptop-model" class="form-input" placeholder="예: MacBook Pro 16" required>
+                <!-- [추가] 사용 소프트웨어 정보 -->
+                <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
+                <div class="pt-6 space-y-4">
+                    <h3 class="font-title-sub font-semibold text-gray-800">사용 소프트웨어 (중복 체크 가능)</h3>
+                    <p class="font-body-main text-gray-600">현재 업무에 사용 중인 소프트웨어를 모두 선택해 주세요.</p>
+                    
+                    <div id="software-checklist" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        
+                        <!-- === 비개발자 수정 영역 시작 === -->
+                        <!-- 항목을 추가/수정하려면 이 <label>~</label> 블록을 복사/붙여넣기 하세요 -->
+                        <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+                            <input type="checkbox" name="software" value="Google" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                            <span class="font-body-main text-gray-700">Google</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+                            <input type="checkbox" name="software" value="SLACK" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                            <span class="font-body-main text-gray-700">SLACK</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+                            <input type="checkbox" name="software" value="Atlassian" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                            <span class="font-body-main text-gray-700">Atlassian (Jira, Confluence)</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+                            <input type="checkbox" name="software" value="FLEX" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                            <span class="font-body-main text-gray-700">FLEX</span>
+                        </label>
+                        <!-- === 비개발자 수정 영역 끝 === -->
+
                     </div>
+                    
                     <div class="mb-4">
-                        <label for="laptop-sn" class="form-label">S/N</label>
-                        <input type="text" id="laptop-sn" name="laptop-sn" class="form-input" placeholder="시리얼 넘버(S/N) 입력" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="laptop-mfd" class="form-label">제조연월</label>
-                        <input type="text" id="laptop-mfd" name="laptop-mfd" class="form-input" placeholder="예: 2023.05 또는 YYYYMM" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="laptop-notes" class="form-label">비고</label>
-                        <input type="text" id="laptop-notes" name="laptop-notes" class="form-input" placeholder="S/N 훼손, 제조연월 확인 불가 등">
+                        <label for="software-other" class="form-label font-body-main">기타 소프트웨어</label>
+                        <input type="text" id="software-other" name="software-other" class="form-input font-body-main" placeholder="목록에 없는 경우, 쉼표(,)로 구분하여 입력 (예: Adobe, Figma)">
                     </div>
                 </div>
 
-                <div class="border-t pt-6 space-y-4">
-                    <h3 class="text-xl font-semibold text-gray-800">모니터 정보</h3>
-                    <!-- [수정] .form-row 대신 mb-4 사용, 라벨/입력창 수직 배치 -->
+                <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
+                <div class="pt-6 space-y-4">
+                    <h3 class="font-title-sub font-semibold text-gray-800">노트북 정보</h3>
                     <div class="mb-4">
-                        <label for="monitor-model" class="form-label">모델명</label>
-                        <input type="text" id="monitor-model" name="monitor-model" class="form-input" placeholder="예: 32UN650" required>
+                        <label for="laptop-model" class="form-label font-body-main">모델명</label>
+                        <input type="text" id="laptop-model" name="laptop-model" class="form-input font-body-main" placeholder="예: MacBook Pro 16" required>
                     </div>
                     <div class="mb-4">
-                        <label for="monitor-sn" class="form-label">S/N</label>
-                        <input type="text" id="monitor-sn" name="monitor-sn" class="form-input" placeholder="시리얼 넘버(S/N) 입력" required>
+                        <label for="laptop-sn" class="form-label font-body-main">S/N</label>
+                        <input type="text" id="laptop-sn" name="laptop-sn" class="form-input font-body-main" placeholder="시리얼 넘버(S/N) 입력" required>
                     </div>
                     <div class="mb-4">
-                        <label for="monitor-mfd" class="form-label">제조연월</label>
-                        <input type="text" id="monitor-mfd" name="monitor-mfd" class="form-input" placeholder="예: 2023.05 또는 YYYYMM" required>
+                        <label for="laptop-mfd" class="form-label font-body-main">제조연월</label>
+                        <input type="text" id="laptop-mfd" name="laptop-mfd" class="form-input font-body-main" placeholder="예: 2023.05 또는 YYYYMM" required>
                     </div>
                     <div class="mb-4">
-                        <label for="monitor-notes" class="form-label">비고</label>
-                        <input type="text" id="monitor-notes" name="monitor-notes" class="form-input" placeholder="스티커 훼손, 확인 불가 등">
+                        <label for="laptop-notes" class="form-label font-body-main">비고</label>
+                        <input type="text" id="laptop-notes" name="laptop-notes" class="form-input font-body-main" placeholder="S/N 훼손, 제조연월 확인 불가 등">
+                    </div>
+                </div>
+
+                <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
+                <div class="pt-6 space-y-4">
+                    <h3 class="font-title-sub font-semibold text-gray-800">모니터 정보</h3>
+                    <div class="mb-4">
+                        <label for="monitor-model" class="form-label font-body-main">모델명</label>
+                        <input type="text" id="monitor-model" name="monitor-model" class="form-input font-body-main" placeholder="예: 32UN650" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="monitor-sn" class="form-label font-body-main">S/N</label>
+                        <input type="text" id="monitor-sn" name="monitor-sn" class="form-input font-body-main" placeholder="시리얼 넘버(S/N) 입력" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="monitor-mfd" class="form-label font-body-main">제조연월</label>
+                        <input type="text" id="monitor-mfd" name="monitor-mfd" class="form-input font-body-main" placeholder="예: 2023.05 또는 YYYYMM" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="monitor-notes" class="form-label font-body-main">비고</label>
+                        <input type="text" id="monitor-notes" name="monitor-notes" class="form-input font-body-main" placeholder="스티커 훼손, 확인 불가 등">
                     </div>
                 </div>
 
                 <div class="text-center pt-6">
-                    <button type="submit" id="submit-button" class="inline-block bg-blue-600 text-white text-xl font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105">
+                    <!-- [수정] 폰트 크기 조정 -->
+                    <button type="submit" id="submit-button" class="inline-block bg-blue-600 text-white font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105" style="font-size: 14pt;">
                         ▶ 자산 실사 정보 제출하기
                     </button>
-                    <p class="text-sm text-gray-500 mt-4" id="submit-message">제출 버튼 클릭 시, 수정이 어렵습니다. 다시 한번 확인 바랍니다. :)</p>
+                    <p class="font-body-main text-gray-500 mt-4" id="submit-message">제출 버튼 클릭 시, 수정이 어렵습니다. 다시 한번 확인 바랍니다. :)</p>
                 </div>
             </form>
         </section>
 
+        <!-- [수정] 상단 구분선은 유지 -->
         <section id="guide" class="app-section mt-12 pt-8 border-t border-gray-300">
             
-            <h2 class="text-3xl font-bold text-gray-900 border-b pb-2 flex items-center">
+            <!-- [수정] font-title-large 적용 -->
+            <h2 class="font-title-large font-bold text-gray-900 border-b pb-2 flex items-center">
                 <img src="asset/paperfl.png" alt="paperfl" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">정보 확인 가이드</span>
             </h2>
-            <p class="text-lg text-gray-700 mb-6">입력할 정보를 찾는 데 어려움이 있다면 아래 가이드를 확인하세요.</p>
+            <!-- [수정] font-body-main 적용 -->
+            <p class="font-body-main text-gray-700 mb-6">입력할 정보를 찾는 데 어려움이 있다면 아래 가이드를 확인하세요.</p>
 
             <div id="laptop-guide" class="mb-10">
                 
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">노트북 정보 확인 방법</h3>
+                <!-- [수정] font-title-sub 적용 -->
+                <h3 class="font-title-sub font-bold text-gray-800 mb-4">노트북 정보 확인 방법</h3>
                 
                 <nav class="flex space-x-2" aria-label="Tabs">
                     <button class="tab-link" data-tab="laptop-sticker">방법 1: 스티커 확인</button>
@@ -212,57 +279,63 @@
 
                 <div class="mt-4">
                     <div id="laptop-sticker" class="tab-content active p-6 bg-white rounded-lg shadow-md">
-                        <h4 class="text-xl font-semibold mb-4 text-gray-800">노트북 바닥 면 스티커 확인 (4단계)</h4>
-                        <p class="text-gray-600 mb-6">대부분의 정보는 노트북 바닥 면의 스티커에 모두 표기되어 있습니다.</p>
+                        <!-- [수정] font-title-sub 적용 -->
+                        <h4 class="font-title-sub font-semibold mb-4 text-gray-800">노트북 바닥 면 스티커 확인 (4단계)</h4>
+                        <!-- [수정] font-body-main 적용 -->
+                        <p class="font-body-main text-gray-600 mb-6">대부분의 정보는 노트북 바닥 면의 스티커에 모두 표기되어 있습니다.</p>
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
                             <div class="bg-white p-5 rounded-lg shadow-inner border border-gray-200">
                                 <span class="text-5xl">💻</span>
-                                <h5 class="text-lg font-semibold mt-3 mb-1">1. 바닥 면 확인</h5>
-                                <p class="text-sm text-gray-600">노트북을 뒤집어 바닥 면을 확인합니다.</p>
+                                <h5 class="font-bold mt-3 mb-1" style="font-size: 11pt;">1. 바닥 면 확인</h5>
+                                <p class="font-body-main text-gray-600">노트북을 뒤집어 바닥 면을 확인합니다.</p>
                             </div>
                             <div class="bg-white p-5 rounded-lg shadow-inner border border-gray-200">
                                 <span class="text-5xl">🔍</span>
-                                <h5 class="text-lg font-semibold mt-3 mb-1">2. 스티커 확인</h5>
-                                <p class="text-sm text-gray-600">바닥에 붙어있는 모델명/규격 스티커를 찾습니다.</p>
+                                <h5 class="font-bold mt-3 mb-1" style="font-size: 11pt;">2. 스티커 확인</h5>
+                                <p class="font-body-main text-gray-600">바닥에 붙어있는 모델명/규격 스티커를 찾습니다.</p>
                             </div>
                             <div class="bg-white p-5 rounded-lg shadow-inner border border-gray-200">
                                 <span class="text-5xl">🏷️</span>
-                                <h5 class="text-lg font-semibold mt-3 mb-1">3. S/N 확인</h5>
-                                <p class="text-sm text-gray-600">'S/N' 또는 'Serial No.' 항목의 값을 확인합니다.</p>
+                                <h5 class="font-bold mt-3 mb-1" style="font-size: 11pt;">3. S/N 확인</h5>
+                                <p class="font-body-main text-gray-600">'S/N' 또는 'Serial No.' 항목의 값을 확인합니다.</p>
                             </div>
                             <div class="bg-white p-5 rounded-lg shadow-inner border border-gray-200">
                                 <span class="text-5xl">📅</span>
-                                <h5 class="text-lg font-semibold mt-3 mb-1">4. 제조연월 확인</h5>
-                                <p class="text-sm text-gray-600">'제조연월' 또는 'MFD' (YYYY.MM) 값을 확인합니다.</p>
+                                <h5 class="font-bold mt-3 mb-1" style="font-size: 11pt;">4. 제조연월 확인</h5>
+                                <p class="font-body-main text-gray-600">'제조연월' 또는 'MFD' (YYYY.MM) 값을 확인합니다.</p>
                             </div>
                         </div>
                     </div>
 
                     <div id="laptop-windows" class="tab-content p-6 bg-white rounded-lg shadow-md">
-                        <h4 class="text-xl font-semibold mb-4 text-gray-800">명령 프롬프트(cmd)로 시리얼 넘버 확인</h4>
-                        <p class="text-gray-600 mb-6">스티커가 훼손되었거나 글씨를 읽기 어려운 경우, 아래 방법으로 시리얼 넘버(S/N)를 확인할 수 있습니다. (제조연월은 확인되지 않을 수 있습니다.)</p>
-                        <div class="space-y-4 text-gray-700">
+                        <!-- [수정] font-title-sub 적용 -->
+                        <h4 class="font-title-sub font-semibold mb-4 text-gray-800">명령 프롬프트(cmd)로 시리얼 넘버 확인</h4>
+                        <!-- [수정] font-body-main 적용 -->
+                        <p class="font-body-main text-gray-600 mb-6">스티커가 훼손되었거나 글씨를 읽기 어려운 경우, 아래 방법으로 시리얼 넘버(S/N)를 확인할 수 있습니다. (제조연월은 확인되지 않을 수 있습니다.)</p>
+                        <div class="font-body-main space-y-4 text-gray-700">
                             <p>1. 키보드의 <code class="bg-gray-200 px-2 py-1 rounded">Windows 키 + R</code> 키를 눌러 '실행' 창을 열거나, 시작 메뉴 검색창에서 <code class="bg-gray-200 px-2 py-1 rounded">cmd</code>를 검색하여 '명령 프롬프트'를 실행합니다.</p>
                             <p>2. 검은색 명령 프롬프트 창이 나타나면, 아래 회색 박스 안의 명령어를 복사하여 붙여넣기 한 후 <code class="bg-gray-200 px-2 py-1 rounded">Enter</code> 키를 누릅니다.</p>
                             <div class="bg-gray-900 text-white p-4 rounded-lg font-mono relative">
                                 <span id="cmd-text">wmic bios get serialnumber</span>
                                 <button id="copy-btn" class="absolute top-2 right-2 bg-gray-700 text-gray-200 px-3 py-1 rounded-md text-sm hover:bg-gray-600 transition-colors">복사</button>
                             </div>
-                            <p id="copy-feedback" class="text-blue-600 h-5"></p>
+                            <p id="copy-feedback" class="text-blue-600 h-5 font-body-main"></p>
                             <p>3. <code class="font-semibold">'SerialNumber'</code> 라는 텍스트 아래에 영문/숫자로 조합된 값이 나타납니다. 이 값이 노트북의 시리얼 넘버입니다.</p>
                         </div>
                     </div>
 
                     <div id="laptop-mac" class="tab-content p-6 bg-white rounded-lg shadow-md">
-                        <h4 class="text-xl font-semibold mb-4 text-gray-800">Apple 메뉴()로 시리얼 넘버 확인</h4>
-                        <p class="text-gray-600 mb-6">macOS 사용자는 이 방법이 가장 간단합니다. (바닥 면 각인으로도 확인 가능)</p>
-                        <ol class="list-decimal list-inside space-y-3 text-gray-700">
+                        <!-- [수정] font-title-sub 적용 -->
+                        <h4 class="font-title-sub font-semibold mb-4 text-gray-800">Apple 메뉴()로 시리얼 넘버 확인</h4>
+                        <!-- [수정] font-body-main 적용 -->
+                        <p class="font-body-main text-gray-600 mb-6">macOS 사용자는 이 방법이 가장 간단합니다. (바닥 면 각인으로도 확인 가능)</p>
+                        <ol class="font-body-main list-decimal list-inside space-y-3 text-gray-700">
                             <li>화면 좌측 상단의 Apple 로고()를 클릭합니다.</li>
                             <li>드롭다운 메뉴에서 <code class="bg-gray-200 px-2 py-1 rounded">'이 Mac에 관하여(About This Mac)'</code>를 선택합니다.</li>
                             <li>나타나는 창의 <code class="bg-gray-200 px-2 py-1 rounded">'개요(Overview)'</code> 탭에 <code class="font-semibold">'일련번호(Serial Number)'</code>가 표시됩니다.</li>
                             <li>
                                 <strong class="font-semibold text-gray-800">제조연월 확인:</strong>
-                                <ul class="list-disc list-inside ml-5 mt-1 text-sm">
+                                <ul class="list-disc list-inside ml-5 mt-1" style="font-size: 9pt;">
                                     <li>이 메뉴에서는 제조연월이 확인되지 않습니다.</li>
                                     <li>노트북 바닥 면의 각인을 확인하시거나, 확인이 어려운 경우 '비고'란에 '확인 불가'로 기재해 주세요.</li>
                                 </ul>
@@ -272,48 +345,56 @@
                 </div>
             </div>
 
-            <div id="monitor-guide" class="mt-10 pt-8 border-t border-gray-200">
+            <!-- [수정] border-t (구분선) 제거 -->
+            <div id="monitor-guide" class="mt-10 pt-8">
                 
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">모니터 정보 확인 방법</h3>
+                <!-- [수정] font-title-sub 적용 -->
+                <h3 class="font-title-sub font-bold text-gray-800 mb-4">모니터 정보 확인 방법</h3>
                 <div class="p-6 bg-white rounded-lg shadow-md">
-                    <h4 class="text-xl font-semibold mb-4 text-gray-800">모니터 뒷면 스티커 확인 (4단계)</h4>
-                    <p class="text-gray-600 mb-6">모니터의 정보는 대부분 제품 뒷면의 스티커에 표기되어 있습니다. (전원 케이블 연결부 근처)</p>
+                    <!-- [수정] font-title-sub 적용 -->
+                    <h4 class="font-title-sub font-semibold mb-4 text-gray-800">모니터 뒷면 스티커 확인 (4단계)</h4>
+                    <!-- [수정] font-body-main 적용 -->
+                    <p class="font-body-main text-gray-600 mb-6">모니터의 정보는 대부분 제품 뒷면의 스티커에 표기되어 있습니다. (전원 케이블 연결부 근처)</p>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
                         <div class="bg-white p-5 rounded-lg shadow-inner border border-gray-200">
                             <span class="text-5xl">🖥️</span>
-                            <h5 class="text-lg font-semibold mt-3 mb-1">1. 뒷면 확인</h5>
-                            <p class="text-sm text-gray-600">모니터의 뒷면을 확인합니다.</p>
+                            <h5 class="font-bold mt-3 mb-1" style="font-size: 11pt;">1. 뒷면 확인</h5>
+                            <p class="font-body-main text-gray-600">모니터의 뒷면을 확인합니다.</p>
                         </div>
                         <div class="bg-white p-5 rounded-lg shadow-inner border border-gray-200">
                             <span class="text-5xl">🔍</span>
-                            <h5 class="text-lg font-semibold mt-3 mb-1">2. 스티커 확인</h5>
-                            <p class="text-sm text-gray-600">뒷면에 붙어있는 모델명/규격 스티커를 찾습니다.</p>
+                            <h5 class="font-bold mt-3 mb-1" style="font-size: 11pt;">2. 스티커 확인</h5>
+                            <p class="font-body-main text-gray-600">뒷면에 붙어있는 모델명/규격 스티커를 찾습니다.</p>
                         </div>
                         <div class="bg-white p-5 rounded-lg shadow-inner border border-gray-200">
                             <span class="text-5xl">🏷️</span>
-                            <h5 class="text-lg font-semibold mt-3 mb-1">3. S/N 확인</h5>
-                            <p class="text-sm text-gray-600">'S/N' 또는 'Serial No.' 항목의 값을 확인합니다.</p>
+                            <h5 class="font-bold mt-3 mb-1" style="font-size: 11pt;">3. S/N 확인</h5>
+                            <p class="font-body-main text-gray-600">'S/N' 또는 'Serial No.' 항목의 값을 확인합니다.</p>
                         </div>
                         <div class="bg-white p-5 rounded-lg shadow-inner border border-gray-200">
                             <span class="text-5xl">📅</span>
-                            <h5 class="text-lg font-semibold mt-3 mb-1">4. 제조연월 확인</h5>
-                            <p class="text-sm text-gray-600">'제조연월' 또는 'MFD' (YYYY.MM) 값을 확인합니다.</p>
+                            <h5 class="font-bold mt-3 mb-1" style="font-size: 11pt;">4. 제조연월 확인</h5>
+                            <p class="font-body-main text-gray-600">'제조연월' 또는 'MFD' (YYYY.MM) 값을 확인합니다.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- [수정] 상단 구분선은 유지 -->
         <section id="help" class="app-section mt-12 pt-8 border-t border-gray-300">
             
-            <h2 class="text-3xl font-bold text-gray-900 border-b pb-2 flex items-center">
+            <!-- [수정] font-title-large 적용 -->
+            <h2 class="font-title-large font-bold text-gray-900 border-b pb-2 flex items-center">
                 <img src="asset/bell.png" alt="문의 아이콘" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
                 <span class="align-middle">문의하기</span>
             </h2>
-            <p class="text-lg text-gray-700">정보 확인에 어려움이 있거나 스티커가 훼손되어 식별이 불가능한 경우, 언제든지 아래 담당자에게 문의해 주세요.</p>
+            <!-- [수정] font-body-main 적용 -->
+            <p class="font-body-main text-gray-700">정보 확인에 어려움이 있거나 스티커가 훼손되어 식별이 불가능한 경우, 언제든지 아래 담당자에게 문의해 주세요.</p>
             
             <div class="bg-white p-6 rounded-lg shadow-md mt-6">
-                <ul class="list-disc list-inside space-y-2 text-gray-700 text-lg">
+                <!-- [수정] font-body-main 적용 -->
+                <ul class="font-body-main list-disc list-inside space-y-2 text-gray-700">
                     <li><strong class="font-medium">담당 부서:</strong> 경영관리본부 경영인프라팀</li>
                     <li><strong class="font-medium">담당자:</strong> Thomas</li>
                     <li><strong class="font-medium">이메일:</strong> thomas@featuring.in</li>
@@ -324,10 +405,9 @@
 
     
     <footer class="text-center py-6 bg-gray-100 mt-12 border-t border-gray-200">
-        <p class="text-sm text-gray-500">© 2025 Featuring. All rights reserved.</p>
+        <!-- [수정] 폰트 크기 조정 -->
+        <p class="text-gray-500" style="font-size: 9pt;">© 2025 Featuring. All rights reserved.</p>
     </footer>
-
-    <!-- Gemini AI 관련 모달 HTML이 제거되었습니다. -->
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -348,8 +428,29 @@
                             content.classList.add('active');
                         }
                     });
+
+                    // [수정] 탭 버튼 활성화/비활성화 스타일링 (선택 사항이지만 추가함)
+                    laptopTabs.forEach(t => {
+                        t.classList.remove('bg-[#5E51FF]', 'hover:bg-[#5045e0]', 'text-white');
+                        t.classList.add('bg-gray-200', 'text-gray-600', 'hover:bg-gray-300');
+                    });
+                    tab.classList.add('bg-[#5E51FF]', 'hover:bg-[#5045e0]', 'text-white');
+                    tab.classList.remove('bg-gray-200', 'text-gray-600', 'hover:bg-gray-300');
                 });
             });
+            // [수정] 첫 번째 탭을 기본 활성 스타일로 설정
+            if (laptopTabs.length > 0) {
+                 laptopTabs.forEach((tab, index) => {
+                     if (index === 0) {
+                        tab.classList.add('bg-[#5E51FF]', 'hover:bg-[#5045e0]', 'text-white');
+                        tab.classList.remove('bg-gray-200', 'text-gray-600', 'hover:bg-gray-300');
+                     } else {
+                        tab.classList.remove('bg-[#5E51FF]', 'hover:bg-[#5045e0]', 'text-white');
+                        tab.classList.add('bg-gray-200', 'text-gray-600', 'hover:bg-gray-300');
+                     }
+                 });
+            }
+
 
             
             const copyBtn = document.getElementById('copy-btn');
@@ -422,11 +523,6 @@
             sections.forEach(section => {
                 observer.observe(section);
             });
-
-            // 폼 제출(submit) 이벤트 리스너가 제거되었습니다.
-            // (이제 폼은 'action' URL로 기본 HTML 동작에 따라 제출됩니다.)
-
-            // Gemini AI 관련 모든 JavaScript가 제거되었습니다.
 
         });
     </script>
