@@ -259,10 +259,13 @@
 
                     <!-- [수정] <input>을 <textarea>로 변경 -->
                     <div class="mb-4 md:col-span-2">
-                            <label for="software-other" class="form-label font-body-main">기타 소프트웨어</label>
+                        <div class="md:flex md:items-start md:space-x-4">
+                            <label for="software-other" class="form-label font-body-main md:w-1/4 md:text-right md:pt-2">기타 소프트웨어</label>
+                         <div class="md:w-3/4">
                             <textarea id="software-other" name="software-other" rows="2" class="form-textarea font-body-main" placeholder="목록에 없는 경우, 쉼표(,)로 구분하여 입력 (예: Amplitude, ChatGPT)"></textarea>
                         </div>
-            </div>
+                    </div>
+                </div>
 
                 <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
                 <div class="pt-6 space-y-4">
