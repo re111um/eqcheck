@@ -63,9 +63,9 @@
             font-size: 10pt;
         }
 
-        /* [추가] textarea는 세로로만 크기 조절 가능하도록 설정 */
+        /* [수정] textarea 크기 조절 완전 비활성화 (고정) */
         .form-textarea {
-            @apply resize-y; /* 가로 크기조절 비활성화 */
+            @apply resize-none; 
         }
         
         /* [추가] input은 크기 조절 없도록(기본값) */
@@ -93,7 +93,6 @@
 <body class="bg-gray-50 text-gray-800">
 
     <header class="bg-[#FFFFFF] shadow-sm sticky top-0 z-10">
-        <!-- ... existing header code ... -->
         <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row justify-between items-center">
             
             <img class="h-10" src="asset/logo.png" alt="Featuring Logo">
@@ -160,7 +159,6 @@
             <form id="asset-form" action="https://script.google.com/a/macros/featuring.in/s/AKfycbzseNw3Og1EHCIPPXvb1j-pdbH5eP97HVApyPZn190D1te2VITAeQd-7-42PiMpe6rTgA/exec" method="POST" class="bg-white p-6 sm:p-8 rounded-lg shadow-md space-y-6">
                 
                 <div class="space-y-4">
-                    <!-- ... existing submitter info ... -->
                     <h3 class="font-title-sub font-semibold text-gray-800">제출자 정보</h3>
                     <div class="mb-4">
                         <label for="submitter-dept" class="form-label font-body-main">소속</label>
@@ -257,30 +255,19 @@
                         </label>
                         <!-- === 비개발자 수정 영역 끝 === -->
                         
-                        <!-- [수정] '기타 소프트웨어' 레이아웃을 '가로 배치'로 변경 -->
+                        <!-- [수정] '기타 소프트웨어' 레이아웃: 2칸 차지(md:col-span-2) + 세로 배치 + 높이 고정 -->
                         <div class="mb-4 md:col-span-2">
-                            <!-- 1. 'md:flex'로 데스크탑에서 가로 배치, 'md:items-start'로 상단 정렬 -->
-                            <div class="md:flex md:items-start md:space-x-4">
-                                
-                                <!-- 2. 라벨: 데스크탑에서 1/4 너비, 텍스트 오른쪽 정렬, 상단 여백(pt-2) 추가 -->
-                                <label for="software-other" class="form-label font-body-main md:w-1/4 md:text-right md:pt-2">기타 소프트웨어</label>
-                                
-                                <!-- 3. 입력창: 데스크탑에서 3/4 너비를 차지 -->
-                                <div class="md:w-3/4">
-                                    <textarea id="software-other" name="software-other" rows="2" class="form-textarea font-body-main" placeholder="목록에 없는 경우, 쉼표(,)로 구분하여 입력 (예: Amplitude, ChatGPT)"></textarea>
-                                </div>
-
-                            </div>
+                            <label for="software-other" class="form-label font-body-main">기타 소프트웨어</label>
+                            <!-- [수정] h-40 (160px)로 높이 고정, resize-none으로 크기 조절 방지 -->
+                            <textarea id="software-other" name="software-other" class="form-textarea font-body-main h-40 resize-none" placeholder="목록에 없는 경우, 쉼표(,)로 구분하여 입력 (예: Amplitude, ChatGPT)"></textarea>
                         </div>
                         
-                    </div> <!-- [수정] ★★★ 여기가 문제였습니다! 이 닫는 태그가 빠져있었습니다. ★★★ -->
+                    </div> <!-- 체크박스 그리드 닫기 -->
 
                 </div>
 
                 <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
-                <!-- 이 섹션(노트북 정보)이 software-checklist 그리드 밖으로 나왔습니다. -->
                 <div class="pt-6 space-y-4">
-                    <!-- ... existing laptop info ... -->
                     <h3 class="font-title-sub font-semibold text-gray-800">노트북 정보</h3>
                     <div class="mb-4">
                         <label for="laptop-model" class="form-label font-body-main">모델명</label>
@@ -301,9 +288,7 @@
                 </div>
 
                 <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
-                <!-- 이 섹션(모니터 정보)이 software-checklist 그리드 밖으로 나왔습니다. -->
                 <div class="pt-6 space-y-4">
-                    <!-- ... existing monitor info ... -->
                     <h3 class="font-title-sub font-semibold text-gray-800">모니터 정보</h3>
                     <div class="mb-4">
                         <label for="monitor-model" class="form-label font-body-main">모델명</label>
@@ -335,7 +320,6 @@
 
         <!-- [수정] 상단 구분선은 유지 -->
         <section id="guide" class="app-section mt-12 pt-8 border-t border-gray-300">
-            <!-- ... existing guide section ... -->
             <!-- [수정] font-title-large 적용, border-b 제거 -->
             <h2 class="font-title-large font-bold text-gray-900 pb-2 flex items-center">
                 <img src="asset/paperfl.png" alt="paperfl" class="inline-block align-middle mr-2" style="width: 42.5px; height: 42.5px;">
@@ -357,7 +341,6 @@
 
                 <div class="mt-4">
                     <div id="laptop-sticker" class="tab-content active p-6 bg-white rounded-lg shadow-md">
-                        <!-- ... existing tab content ... -->
                         <h4 class="font-title-sub font-semibold mb-4 text-gray-800">노트북 바닥 면 스티커 확인 (4단계)</h4>
                         <p class="font-body-main text-gray-600 mb-6">대부분의 정보는 노트북 바닥 면의 스티커에 모두 표기되어 있습니다.</p>
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
@@ -385,7 +368,6 @@
                     </div>
 
                     <div id="laptop-windows" class="tab-content p-6 bg-white rounded-lg shadow-md">
-                        <!-- ... existing tab content ... -->
                         <h4 class="font-title-sub font-semibold mb-4 text-gray-800">명령 프롬프트(cmd)로 시리얼 넘버 확인</h4>
                         <p class="font-body-main text-gray-600 mb-6">스티커가 훼손되었거나 글씨를 읽기 어려운 경우, 아래 방법으로 시리얼 넘버(S/N)를 확인할 수 있습니다. (제조연월은 확인되지 않을 수 있습니다.)</p>
                         <div class="font-body-main space-y-4 text-gray-700">
@@ -401,7 +383,6 @@
                     </div>
 
                     <div id="laptop-mac" class="tab-content p-6 bg-white rounded-lg shadow-md">
-                        <!-- ... existing tab content ... -->
                         <h4 class="font-title-sub font-semibold mb-4 text-gray-800">Apple 메뉴()로 시리얼 넘버 확인</h4>
                         <p class="font-body-main text-gray-600 mb-6">macOS 사용자는 이 방법이 가장 간단합니다. (바닥 면 각인으로도 확인 가능)</p>
                         <ol class="font-body-main list-decimal list-inside space-y-3 text-gray-700">
@@ -422,7 +403,6 @@
 
             <!-- [수정] border-t (구분선) 제거 -->
             <div id="monitor-guide" class="mt-10 pt-8">
-                <!-- ... existing monitor guide ... -->
                 <h3 class="font-title-sub font-bold text-gray-800 mb-4">모니터 정보 확인 방법</h3>
                 <div class="p-6 bg-white rounded-lg shadow-md">
                     <h4 class="font-title-sub font-semibold mb-4 text-gray-800">모니터 뒷면 스티커 확인 (4단계)</h4>
@@ -475,21 +455,6 @@
                 
                 <!-- Slack DM 버튼 -->
                 <div>
-                    <!-- 
-                        [ 관리자 참고: Slack DM 링크 설정 (2단계) ]
-                        이 버튼이 작동하려면 "YOUR_TEAM_ID"와 "YOUR_USER_ID"를 실제 값으로 변경해야 합니다.
-
-                        1. Slack 워크스페이스(팀) ID (T로 시작):
-                           - Slack을 웹 브라우저로 열었을 때 주소창 (예: app.slack.com/client/T0123ABCDE/...)
-                           - "T0123ABCDE" 부분이 팀 ID입니다.
-
-                        2. 담당자(Thomas)의 멤버 ID (U로 시작):
-                           - Slack 앱에서 담당자(Thomas)의 프로필 클릭
-                           - [...] 더보기 버튼 클릭
-                           - [멤버 ID 복사] 클릭 (예: U012345678)
-                        
-                        아래 href의 "YOUR_TEAM_ID"와 "YOUR_USER_ID"를 복사한 값으로 교체하세요.
-                    -->
                     <a href="slack://user?team=TL0NAE2AD&id=U099RMP705B"
                        target="_blank" 
                        class="inline-flex items-center justify-center px-6 py-3 bg-[#4A154B] text-white font-bold rounded-lg shadow-md hover:bg-[#3f0e40] transition-colors duration-200 font-body-main">
@@ -513,7 +478,6 @@
 
     
     <footer class="text-center py-6 bg-gray-100 mt-12 border-t border-gray-200">
-        <!-- [수정] 폰트 크기 조정 -->
         <p class="text-gray-500" style="font-size: 9pt;">© 2025 Featuring. All rights reserved.</p>
     </footer>
 
