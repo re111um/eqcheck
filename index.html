@@ -256,18 +256,29 @@
                             </div>
                         </label>
                         <!-- === 비개발자 수정 영역 끝 === -->
+                        
+                        <!-- [수정] '기타 소프트웨어' 레이아웃을 '가로 배치'로 변경 -->
+                        <div class="mb-4 md:col-span-2">
+                            <!-- 1. 'md:flex'로 데스크탑에서 가로 배치, 'md:items-start'로 상단 정렬 -->
+                            <div class="md:flex md:items-start md:space-x-4">
+                                
+                                <!-- 2. 라벨: 데스크탑에서 1/4 너비, 텍스트 오른쪽 정렬, 상단 여백(pt-2) 추가 -->
+                                <label for="software-other" class="form-label font-body-main md:w-1/4 md:text-right md:pt-2">기타 소프트웨어</label>
+                                
+                                <!-- 3. 입력창: 데스크탑에서 3/4 너비를 차지 -->
+                                <div class="md:w-3/4">
+                                    <textarea id="software-other" name="software-other" rows="2" class="form-textarea font-body-main" placeholder="목록에 없는 경우, 쉼표(,)로 구분하여 입력 (예: Amplitude, ChatGPT)"></textarea>
+                                </div>
 
-                    <!-- [수정] <input>을 <textarea>로 변경 -->
-                    <div class="mb-4 md:col-span-2">
-                        <div class="md:flex md:items-start md:space-x-4">
-                            <label for="software-other" class="form-label font-body-main md:w-1/4 md:text-right md:pt-2">기타 소프트웨어</label>
-                         <div class="md:w-3/4">
-                            <textarea id="software-other" name="software-other" rows="2" class="form-textarea font-body-main" placeholder="목록에 없는 경우, 쉼표(,)로 구분하여 입력 (예: Amplitude, ChatGPT)"></textarea>
+                            </div>
                         </div>
-                    </div>
+                        
+                    </div> <!-- [수정] ★★★ 여기가 문제였습니다! 이 닫는 태그가 빠져있었습니다. ★★★ -->
+
                 </div>
 
                 <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
+                <!-- 이 섹션(노트북 정보)이 software-checklist 그리드 밖으로 나왔습니다. -->
                 <div class="pt-6 space-y-4">
                     <!-- ... existing laptop info ... -->
                     <h3 class="font-title-sub font-semibold text-gray-800">노트북 정보</h3>
@@ -290,6 +301,7 @@
                 </div>
 
                 <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
+                <!-- 이 섹션(모니터 정보)이 software-checklist 그리드 밖으로 나왔습니다. -->
                 <div class="pt-6 space-y-4">
                     <!-- ... existing monitor info ... -->
                     <h3 class="font-title-sub font-semibold text-gray-800">모니터 정보</h3>
