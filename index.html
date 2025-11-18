@@ -256,10 +256,38 @@
                         <!-- === 비개발자 수정 영역 끝 === -->
                         
                         <!-- [수정] '기타 소프트웨어' 레이아웃 수정: 2칸 차지 + 라벨 상단 배치 + 입력창 꽉 채움 -->
-                        <div class="mb-4 md:col-span-2">
-                            <label for="software-other" class="form-label font-body-main">기타 소프트웨어</label>
-                            <textarea id="software-other" name="software-other" class="form-textarea font-body-main h-40 resize-none" placeholder="목록에 없는 경우, 쉼표(,)로 구분하여 입력 (예: Amplitude, ChatGPT)"></textarea>
-                        </div>
+         <!-- [수정] '기타 소프트웨어' 카드 형태로 통일 + 한 줄 입력 -->
+<label for="software-other"
+       class="md:col-span-2 p-3 bg-gray-50 rounded-md border border-gray-200 flex flex-col gap-2 hover:bg-gray-100 cursor-text">
+    
+    <!-- 제목 + 보조 문구 한 줄 정리 -->
+    <div class="flex items-center justify-between">
+        <span class="font-body-main text-gray-700 font-medium">
+            기타 소프트웨어
+        </span>
+        <span class="text-[9pt] text-gray-400 hidden md:inline">
+            위 목록에 없는 경우만 입력해 주세요
+        </span>
+    </div>
+
+    <!-- 모바일에서도 보이는 안내 문구 -->
+    <p class="font-body-main text-gray-500 text-[9pt] md:hidden">
+        위 목록에 없는 소프트웨어가 있다면 적어 주세요.
+    </p>
+
+    <!-- 입력 안내 문구 (예시 + 쉼표 안내) -->
+    <p class="font-body-main text-gray-500 text-[9pt]">
+        쉼표(,)로 구분해서 입력해 주세요. 예) Amplitude, ChatGPT
+    </p>
+
+    <!-- 실제 입력창: textarea → 한 줄 input으로 변경 -->
+    <input
+        type="text"
+        id="software-other"
+        name="software-other"
+        class="form-input font-body-main"
+        placeholder="예: Amplitude, ChatGPT">
+</label>
                         
                     </div> <!-- 체크박스 그리드 닫기 -->
 
