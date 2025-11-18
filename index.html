@@ -176,94 +176,107 @@
                     </div>
                 </div>
 
-                <!-- [수정] 사용 소프트웨어 정보 (Admin 체크박스 추가) -->
-                <div class="pt-6 space-y-4">
-                    <h3 class="font-title-sub font-semibold text-gray-800">사용 소프트웨어</h3>
-                    <p class="font-body-main text-gray-600">현재 사용 중인 소프트웨어와 Admin 계정 보유 시 함께 체크해 주세요.</p>
-                    
-                    <!-- [수정] grid-cols-1 md:grid-cols-2 로 변경하여 가로 공간 확보 -->
-                    <div id="software-checklist" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        
-                        <!-- === 비개발자 수정 영역 시작 === -->
-                        <!-- [수정] Admin 체크박스를 포함한 <label> 구조로 변경 -->
-                        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
-                            <!-- Main Software Check -->
-                            <div class="flex items-center space-x-2">
-                                <input type="checkbox" name="software" value="Adobe" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
-                                <span class="font-body-main text-gray-700">Adobe</span>
-                            </div>
-                            <!-- Admin Check -->
-                            <div class="flex items-center space-x-1">
-                                <input type="checkbox" name="software_admin" value="Adobe_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
-                                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
-                            </div>
-                        </label>
+            <!-- [수정] 사용 소프트웨어 정보 (Admin 체크박스 추가) -->
+<div class="pt-6 space-y-4">
+    <h3 class="font-title-sub font-semibold text-gray-800">사용 소프트웨어</h3>
+    <p class="font-body-main text-gray-600">
+        현재 사용 중인 소프트웨어와 Admin 계정 보유 시 함께 체크해 주세요. <br> (*구글, SLACK, Jira, Confluence, Flex는 제외합니다.)
+    </p>
+    <p class="font-body-main text-gray-500 text-xs md:text-sm">
+        아래 목록에 있는 소프트웨어만 체크해 주세요.  
+        목록에 없는 소프트웨어는 하단의 <strong>“그 외 사용하는 소프트웨어”</strong>에 직접 입력하면 됩니다.
+    </p>
+    
+    <!-- [수정] grid-cols-1 md:grid-cols-2 로 변경하여 가로 공간 확보 -->
+    <div id="software-checklist" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- === 비개발자 수정 영역 시작 === -->
+        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" name="software" value="Adobe" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                <span class="font-body-main text-gray-700">Adobe</span>
+            </div>
+            <div class="flex items-center space-x-1">
+                <input type="checkbox" name="software_admin" value="Adobe_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
+                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
+            </div>
+        </label>
 
-                        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
-                            <div class="flex items-center space-x-2">
-                                <input type="checkbox" name="software" value="Snowflake" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
-                                <span class="font-body-main text-gray-700">Snowflake</span>
-                            </div>
-                            <div class="flex items-center space-x-1">
-                                <input type="checkbox" name="software_admin" value="Snowflake_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
-                                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
-                            </div>
-                        </label>
+        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" name="software" value="Snowflake" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                <span class="font-body-main text-gray-700">Snowflake</span>
+            </div>
+            <div class="flex items-center space-x-1">
+                <input type="checkbox" name="software_admin" value="Snowflake_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
+                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
+            </div>
+        </label>
 
-                        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
-                            <div class="flex items-center space-x-2">
-                                <input type="checkbox" name="software" value="Figma" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
-                                <span class="font-body-main text-gray-700">Figma</span>
-                            </div>
-                            <div class="flex items-center space-x-1">
-                                <input type="checkbox" name="software_admin" value="Figma_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
-                                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
-                            </div>
-                        </label>
+        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" name="software" value="Figma" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                <span class="font-body-main text-gray-700">Figma</span>
+            </div>
+            <div class="flex items-center space-x-1">
+                <input type="checkbox" name="software_admin" value="Figma_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
+                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
+            </div>
+        </label>
 
-                        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
-                            <div class="flex items-center space-x-2">
-                                <input type="checkbox" name="software" value="Hubspot" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
-                                <span class="font-body-main text-gray-700">Hubspot</span>
-                            </div>
-                            <div class="flex items-center space-x-1">
-                                <input type="checkbox" name="software_admin" value="Hubspot_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
-                                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
-                            </div>
-                        </label>
+        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" name="software" value="Hubspot" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                <span class="font-body-main text-gray-700">Hubspot</span>
+            </div>
+            <div class="flex items-center space-x-1">
+                <input type="checkbox" name="software_admin" value="Hubspot_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
+                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
+            </div>
+        </label>
 
-                        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
-                            <div class="flex items-center space-x-2">
-                                <input type="checkbox" name="software" value="MS Office" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
-                                <span class="font-body-main text-gray-700">MS Office (Excel, PPT, Word Etc..)</span>
-                            </div>
-                            <div class="flex items-center space-x-1">
-                                <input type="checkbox" name="software_admin" value="MS Office_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
-                                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
-                            </div>
-                        </label>
+        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" name="software" value="MS Office" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                <span class="font-body-main text-gray-700">MS Office (Excel, PPT, Word Etc..)</span>
+            </div>
+            <div class="flex items-center space-x-1">
+                <input type="checkbox" name="software_admin" value="MS Office_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
+                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
+            </div>
+        </label>
 
-                       <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
-                            <div class="flex items-center space-x-2">
-                                <input type="checkbox" name="software" value="Rapid APIs" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
-                                <span class="font-body-main text-gray-700">Rapid APIs</span>
-                            </div>
-                            <div class="flex items-center space-x-1">
-                                <input type="checkbox" name="software_admin" value="Rapid APIs_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
-                                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
-                            </div>
-                        </label>
-                        <!-- === 비개발자 수정 영역 끝 === -->
-                        
-                        <!-- [수정] '기타 소프트웨어' 레이아웃 수정: 2칸 차지 + 라벨 상단 배치 + 입력창 꽉 채움 -->
-                        <div class="mb-4 md:col-span-2">
-                            <label for="software-other" class="form-label font-body-main">기타 소프트웨어</label>
-                            <textarea id="software-other" name="software-other" class="form-textarea font-body-main h-40 resize-none" placeholder="목록에 없는 경우, 쉼표(,)로 구분하여 입력 (예: Amplitude, ChatGPT)"></textarea>
-                        </div>
-                        
-                    </div> <!-- 체크박스 그리드 닫기 -->
+        <label class="flex items-center justify-between space-x-2 p-3 bg-gray-50 rounded-md border border-gray-200 hover:bg-gray-100 cursor-pointer">
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" name="software" value="Rapid APIs" class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                <span class="font-body-main text-gray-700">Rapid APIs</span>
+            </div>
+            <div class="flex items-center space-x-1">
+                <input type="checkbox" name="software_admin" value="Rapid APIs_Admin" class="rounded border-gray-300 text-blue-500 shadow-sm focus:ring-blue-500" style="width: 0.875rem; height: 0.875rem;">
+                <span class="font-body-main text-blue-600" style="font-size: 9pt;">(Admin)</span>
+            </div>
+        </label>
+        <!-- === 비개발자 수정 영역 끝 === -->
 
-                </div>
+    </div> <!-- 체크박스 그리드 닫기 -->
+
+    <!-- [수정] '기타 소프트웨어'를 그리드 밖, 하단에 별도 블록으로 배치 -->
+    <div class="mt-4">
+        <label for="software-other" class="form-label font-body-main">
+            그 외 사용하는 소프트웨어 <span class="text-gray-400 text-xs">(선택)</span>
+        </label>
+        <textarea
+            id="software-other"
+            name="software-other"
+            class="form-textarea font-body-main h-32 resize-none"
+            placeholder="예: Amplitude, ChatGPT 등">
+        </textarea>
+        <p class="mt-1 text-gray-500 text-xs md:text-sm">
+            위 목록에 없는 업무용/라이선스 소프트웨어만 쉼표(,)로 구분해 입력해 주세요.  
+            예) Amplitude, Notion AI, ChatGPT
+        </p>
+    </div>
+</div>
 
                 <!-- [수정] border-t (구분선) 제거, pt-6으로 상단 여백만 줌 -->
                 <div class="pt-6 space-y-4">
